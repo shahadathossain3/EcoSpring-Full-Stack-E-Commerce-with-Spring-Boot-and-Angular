@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 p-0">
+      <app-sidebars></app-sidebars>
+    </div>
+    <div class="col-md-9 center-content">
+      <div *ngIf="message">
+        <h2 class="text-center text-danger">{{message}}</h2>
+      </div>
+      <div class="card w-75">
+        <div class="card-header bg-secondary text-white">
+          Login
+        </div>
+        <div class="card-body">
+      <form>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="text" class="form-control" id="email" name="email" [(ngModel)]="users.email">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" name="password" [(ngModel)]="users.password">
+            </div>
+          </div>
+
+        </div>
+
+        <button *ngIf="!isLoading" (click)="loginUser()" class="btn btn-primary">Login</button>
+        <button *ngIf="isLoading" class="btn btn-primary" type="button" disabled>
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Loading...
+        </button>
+      </form>
+          <small><a style="text-decoration: none" [routerLink]="['/add-users']">Registration</a> </small>
+        </div>
+      </div>
+      <small>{{unauthorized}}</small>
+
+    </div>
+  </div>
+</div>
+
+

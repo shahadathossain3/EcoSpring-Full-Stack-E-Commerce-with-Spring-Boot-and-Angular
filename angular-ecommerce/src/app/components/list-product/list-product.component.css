@@ -1,0 +1,14 @@
+.card-hover-shadow-grow {
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.card-hover-shadow-grow:hover {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Optional margin for spacing */
+}

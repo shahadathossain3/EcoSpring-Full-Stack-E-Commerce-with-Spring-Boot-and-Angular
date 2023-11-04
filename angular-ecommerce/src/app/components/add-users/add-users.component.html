@@ -1,0 +1,87 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 p-0">
+      <app-sidebars></app-sidebars>
+    </div>
+    <div class="col-md-9 mt-5">
+<!--      <div>-->
+<!--        <h2 class="text-center">-->
+<!--          {{ productId ? 'Update Product' : 'Add New Product' }}-->
+<!--        </h2>-->
+
+      <div *ngIf="isSuccessReg" class="text-center">
+        <h1>{{message}}</h1>
+      </div>
+
+
+      <div *ngIf="!isSuccessReg" class="container">
+        <form [formGroup]="formData" (ngSubmit)="addUsers(); formData.markAllAsTouched()">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <div class="form-group">
+                <label for="firstName" class="form-label">First Name<span class="text-danger">*</span> </label>
+                <input type="text" class="form-control" name="firstName" id="firstName" formControlName="firstName">
+                  <small class="text-danger" *ngIf="formData.get('firstName')?.touched && formData.get('firstName')?.hasError('required')">First Name is required</small>
+              </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="mb-3">
+                <div class="form-group">
+                <label for="lastName" class="form-label">Last Name<span class="text-danger">*</span> </label>
+                <input type="text" class="form-control" id="lastName" name="lastName" formControlName="lastName">
+                  <small class="text-danger" *ngIf="formData.get('lastName')?.touched && formData.get('lastName')?.hasError('required')">Last Name is required</small>
+              </div>
+            </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="mb-3">
+                <div class="form-group">
+                <label for="email" class="form-label">Email<span class="text-danger">*</span> </label>
+                <input type="text" class="form-control" id="email" name="email" formControlName="email">
+                  <small class="text-danger" *ngIf="formData.get('email')?.touched && formData.get('email')?.hasError('required')">Email is required</small>
+                  <small class="text-danger" *ngIf="formData.get('email')?.touched && formData.get('email')?.hasError('email')">Provide Valid email</small>
+<!--                  <small class="text-danger" *ngIf="formData.get('email').touched && formData.get('email')?.hasError('email')">Please Validated Pattern</small>-->
+              </div>
+            </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="mb-3">
+                <div class="form-group">
+                <label for="password" class="form-label">Password<span class="text-danger">*</span></label>
+                <input type="password" class="form-control" id="password" name="password" formControlName="password">
+                  <small class="text-danger" *ngIf="formData.get('password')?.touched && formData.get('password')?.hasError('required')">Password is required</small>
+                  <small class="text-danger" *ngIf="formData.get('password')?.touched && formData.get('password')?.hasError('minlength')">Minimum 5 Length required</small>
+              </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="mb-3">
+                <div class="form-group">
+                <label for="mobile" class="form-label">Mobile</label>
+                <input type="text" class="form-control" id="mobile" name="mobile" formControlName="mobile" >
+              </div>
+            </div>
+            </div>
+
+          </div>
+<!--          <button *ngIf="productId" (click)="updateProduct(product.id)" class="btn btn-warning">Update</button>-->
+          <button *ngIf="!isLoading" class="btn btn-primary" type="submit" >Submit</button>
+          <button *ngIf="isLoading" class="btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Loading...
+          </button>
+        </form>
+        <small><a style="text-decoration: none" [routerLink]="['/login-user']">Login</a> </small>
+      </div>
+    </div>
+  </div>
+</div>
+
+

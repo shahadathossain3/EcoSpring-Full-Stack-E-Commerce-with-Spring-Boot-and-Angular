@@ -1,0 +1,41 @@
+<app-header></app-header>
+<div class="container-fluid" style="overflow-x: hidden">
+  <div class="row">
+    <div class="col-md-3 p-0">
+      <app-sidebars></app-sidebars>
+    </div>
+    <div class="col-md-9">
+      <app-banner></app-banner>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-3" *ngFor="let product of productsList">
+      <div class="card card-hover-shadow-grow mb-3">
+        <a [routerLink]="['/details-products',product.id]" style="text-decoration: none; color: inherit">
+          <img class="card-img-top" [src]="product.image" alt="Card image cap" style="height: 400px; width: 300px">
+          <div class="card-body">
+            <h5 class="card-title">{{product.title}}</h5>
+            <h6> <span [style.font-size.px]=18 style="font-weight: bold" >&#2547; </span>{{ product.price }} </h6>
+            <small *ngIf="product && product.discount && product.discount > 0">Discount: {{product?.discount}}%</small>
+            <p class="card-text">{{product.description}}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pagination-container">
+  <ngb-pagination
+    [collectionSize]="400"
+    [(page)]="currentPage"
+    [maxSize]="5"
+    [rotate]="true"
+    [ellipses]="false"
+    [boundaryLinks]="true"
+    (pageChange)="pageChanged($event)"
+  ></ngb-pagination>
+</div>
+<app-footer></app-footer>
+
+

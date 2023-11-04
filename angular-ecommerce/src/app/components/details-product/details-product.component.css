@@ -1,0 +1,19 @@
+.horizontal-list-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.horizontal-list-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+}
+
+.cancel-button {
+  background: none;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+}

@@ -1,0 +1,50 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 p-0">
+      <app-sidebars></app-sidebars>
+    </div>
+    <div class="col-md-9 mt-3">
+      <div class="row">
+        <div class="col-md-6">
+          <img [src]="products?.image" style="width: 100%">
+        </div>
+          <div class="col-md-6">
+                <h1>{{products?.title}}</h1>
+            <small>Brand: {{products?.brand}}</small>
+            <br>
+            <div>
+              <small>Category : </small> <small *ngFor="let category of products?.categories">{{category.name}} | </small>
+            </div>
+            <h2> <span [style.font-size.px]=30 style="font-weight: bold" >&#2547; </span>{{ products?.price }} </h2>
+            <small *ngIf="products && products.discount && products.discount > 0 ">Discount: {{products.discount}}%</small>
+                <p >{{products?.description}}</p>
+            <div *ngIf="roleAccessButton(); else adminRole" class="mt-5 d-flex justify-content-center gap-2">
+              <button *ngIf="products" type="button" class="btn btn-success btn-lg" style="width: 150px">Buy Now</button>
+              <button *ngIf="products && !checkCartItems()" type="button" class="btn btn-warning btn-lg" style="width: 150px" (click)="addToCart(products)" >Add To Cart</button>
+              <button *ngIf="checkCartItems()" type="button" class="btn btn-warning btn-lg" style="width: 150px;" [routerLink]="['/cart']">Go To Cart</button>
+            </div>
+            <ng-template #adminRole>
+            <div class="mt-5 d-flex justify-content-center gap-2">
+              <button type="button" class="btn btn-warning btn-lg" style="width: 150px" [routerLink]="['/products',products?.id]" >Edit</button>
+              <button type="button" class="btn btn-danger btn-lg" style="width: 150px" (click)="deleteProduct(products?.id)" >Delete</button>
+            </div>
+            </ng-template>
+              </div>
+          </div>
+        </div>
+
+      </div>
+</div>
+<div style="margin-top: 4rem">
+<app-footer></app-footer>
+</div>
+
+<!--<div class="horizontal-list-container">-->
+<!--  <div *ngFor="let item of items; let i = index" class="horizontal-list-item">-->
+<!--    {{ item.name }}-->
+<!--    <button (click)="removeItem(i)" class="cancel-button">&#10006;</button>-->
+<!--  </div>-->
+<!--</div>-->
+
+

@@ -1,0 +1,86 @@
+<app-header></app-header>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-3 p-0">
+    <app-admin-template-sidebar></app-admin-template-sidebar>
+  </div>
+  <div class="col-md-9">
+    <div class="row">
+      <h1 class="text-center">Admin Dashboard</h1>
+      <div class="col-md-6">
+        <a [routerLink]="['/pending-order-products']" class="text-decoration-none">
+        <div class="card" style="margin-left: 20px">
+          <div class="card-body">
+            <h5 class="card-title">Pending Order</h5>
+
+            <h1 class="card-text">{{pending}}</h1>
+          </div>
+        </div>
+        </a>
+      </div>
+      <div class="col-md-6">
+        <a [routerLink]="['/pending-delivery-order-products']" class="text-decoration-none">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Pending Delivery</h5>
+            <h1 class="card-text">{{delivery}}</h1>
+          </div>
+        </div>
+        </a>
+      </div>
+      <div class="row mt-5">
+        <div class="col-md-6">
+          <div class="chart-container">
+            <canvas id="pieChart" width="300" height="300"></canvas>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="chart-container">
+            <canvas id="barChart" width="300" height="200"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--<app-header></app-header>-->
+<!--<div class="container-fluid">-->
+<!--  <div class="row">-->
+
+<!--    <div class="col-md-3">-->
+
+<!--    </div>-->
+
+
+
+<!--    &lt;!&ndash; Main Content &ndash;&gt;-->
+<!--&lt;!&ndash;    <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">&ndash;&gt;-->
+<!--&lt;!&ndash;        <h1 class="h2">Dashboard</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--    <div class="col-md-9">-->
+<!--      <div class="row">-->
+<!--        <div class="col-md-6">-->
+<!--          <div class="card">-->
+<!--            <div class="card-body">-->
+<!--              <h5 class="card-title">Pending Order</h5>-->
+<!--              <p class="card-text">This is some sample content for the card.</p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="col-md-6">-->
+<!--          <div class="card">-->
+<!--            <div class="card-body">-->
+<!--              <h5 class="card-title">Pending Delivery</h5>-->
+<!--              <p class="card-text">This is some sample content for the card.</p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

@@ -1,0 +1,37 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 *ngIf="isPending" class="text-center">Pending Order</h2>
+      <h2 *ngIf="isDelivery" class="text-center">Delivery Pending Order</h2>
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Mobile</th>
+          <th scope="col">Address</th>
+          <th scope="col">Total Price</th>
+          <th scope="col">Total Items</th>
+          <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let order of pendingProductOrderList; let i=index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{order?.firstName}} {{order?.lastName}}</td>
+          <td>{{order?.mobile}}</td>
+          <td>{{order?.address}}</td>
+          <td>{{order?.totalPrice}}</td>
+          <td>{{order?.totalItems}}</td>
+          <td>
+            <button  class="btn btn-secondary btn-md" style="margin-right: 10px" (click)="updateProductOrder(order.id, order)">Confirm</button>
+            <button  class="btn btn-danger btn-md" (click)="deleteOrder(order.id)">Delete</button>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

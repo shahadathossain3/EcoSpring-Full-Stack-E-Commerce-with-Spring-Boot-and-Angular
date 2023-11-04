@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 p-0">
+      <app-sidebars></app-sidebars>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-6">
+          <a [routerLink]="['/user/pending-order-details/',userId]" class="text-decoration-none">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Order Pending</h5>
+              <p class="card-text">{{pendingSize}}</p>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a [routerLink]="['/user/history-order-details/',userId]" class="text-decoration-none">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Order History</h5>
+              <p class="card-text">{{historySize}}</p>
+            </div>
+          </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

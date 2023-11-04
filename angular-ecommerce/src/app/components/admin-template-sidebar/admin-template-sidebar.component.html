@@ -1,0 +1,21 @@
+<div class="sidebar">
+  <div class="logo">My Shop</div>
+  <ul class="nav flex-column text-center">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/add-category']">Add Category</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/add-products']" >Add Product</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/customer-list']">Customer List</a>
+    </li>
+
+  </ul>
+</div>

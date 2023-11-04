@@ -1,0 +1,43 @@
+<div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <!-- Logo on the left -->
+    <a class="navbar-brand" href="#">
+      <img src="assets/images/img.png" alt="Logo" height="50">
+    </a>
+
+    <!-- Centered search bar -->
+   <div class="d-flex gap-3">
+     <form class="form-inline mx-auto d-flex justify-content-end" (ngSubmit)="search()">
+       <input class="form-control" style="width: 600px; margin-right: 10px;" type="search" [(ngModel)]="keyword" name="searchKeyword" placeholder="Search" aria-label="Search">
+       <button class="btn btn-primary ml-2" type="submit">Search</button>
+     </form>
+    </div>
+    <!-- Buttons on the right -->
+    <div class="d-flex gap-3">
+      <div *ngIf="users.authStatus==='AUTH'" ngbDropdown class="d-inline-block">
+        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+          {{users.firstName}} {{users.lastName}}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button class="btn btn-outline-primary" [routerLinkActive]="['active']" [routerLink]="['/user/user-details/',users.id]" ngbDropdownItem>Profile</button>
+          <button class="btn btn-outline-primary" [routerLinkActive]="['active']" [routerLink]="['/logout']" ngbDropdownItem>Logout</button>
+        </div>
+      </div>
+      <button *ngIf="users.authStatus!='AUTH'" routerLinkActive="active" [routerLink]="['/login-user']" class="btn btn-outline-primary mr-2">Login</button>
+<!--      <button *ngIf="users.authStatus==='AUTH'" routerLinkActive="active" [routerLink]="['/logout']" class="btn btn-outline-primary">Logout</button>-->
+      <a [routerLink]="['/cart']">
+      <button class="btn btn-outline-secondary  position-relative">Cart
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    {{cartQuantity}}
+    <span class="visually-hidden">unread messages</span>
+  </span>
+      </button>
+      </a>
+    </div>
+  </div>
+</nav>
+
+</div>
+
+<router-outlet></router-outlet>

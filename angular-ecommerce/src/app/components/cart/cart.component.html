@@ -1,0 +1,42 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+<!--    <div class="col-md-3 p-0">-->
+<!--      <app-sidebars></app-sidebars>-->
+<!--    </div>-->
+    <div class="col-md-12 mt-5">
+      <div class="row">
+        <div class="col-md-8">
+          <h1 class="mb-4">Shopping Cart</h1>
+          <div *ngFor="let item of itemsStore" class="cart-item">
+            <div class="row">
+              <div class="col-md-7">
+            <h4>{{item.products?.title}}</h4>
+            <input type="number" class="form-control text-center" id="quantity" name="quantity" [value]="item.quantity" [(ngModel)]="item.quantity"  style="width: 100px;" (change)="priceQuantityUpdate(item)" >
+            <p>Price: <span [style.font-size.px]=24 style="font-weight: bold;">&#2547; </span>{{item.totalItemsPrice}}</p>
+                <p><small *ngIf="item && item.products && item.products.discount && item.products.discount > 0 ">Discount: {{item.products.discount}}%</small></p>
+            <button class="btn btn-danger btn-sm" (click)="removeItems(item.products?.id)">Remove</button>
+              </div>
+              <div class="col-md-4">
+                <img [src]="item.products?.image" style="width: 250px;">
+              </div>
+          </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card" style="position: fixed; width: 30%">
+            <div class="card-body">
+              <h4 class="card-title">Cart Summary</h4>
+              <p>Total Items: {{totalCartItems}}</p>
+              <p>Total Price: {{totalPrice}}</p>
+              <p><small>Total Discount: {{totalDiscount}}</small></p>
+<!--              <button [routerLink]="['/add-order-products']" class="btn btn-primary btn-block">Confirm Order</button>-->
+              <button (click)="addOrderProduct()" class="btn btn-primary btn-block">Confirm Order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

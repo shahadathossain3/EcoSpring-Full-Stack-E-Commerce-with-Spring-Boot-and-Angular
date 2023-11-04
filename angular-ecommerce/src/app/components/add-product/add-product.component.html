@@ -1,0 +1,75 @@
+<app-header></app-header>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-3 p-0">
+    <app-admin-template-sidebar></app-admin-template-sidebar>
+  </div>
+  <div class="col-md-9">
+    <div>
+      <h2 class="text-center">
+        {{ productId ? 'Update Product' : 'Add New Product' }}
+      </h2>
+    </div>
+
+
+    <div>
+    <form>
+      <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" name="title" [(ngModel)]="product.title" >
+        </div>
+      </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" id="price" name="price" [(ngModel)]="product.price" >
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="discount" class="form-label">Discount</label>
+            <input type="number" class="form-control" id="discount" name="discount" [(ngModel)]="product.discount" >
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="brand" class="form-label">Brand</label>
+            <input type="text" class="form-control" id="brand" name="brand" [(ngModel)]="product.brand" >
+          </div>
+        </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="categories" class="form-label">Select Category</label>
+          <select id="categories" class="form-control" [(ngModel)]="category" name="categories" (change)="OnChaneCategory()">
+            <option *ngFor="let category of categoriesList" [ngValue]="category">{{ category.name }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="image" class="form-label">Image</label>
+          <input type="file" class="form-control" id="image" name="image" (change)="onImageChange($event)">
+        </div>
+      </div>
+        <div class="col-md-6">
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description" [(ngModel)]="product.description" ></textarea>
+      </div>
+        </div>
+      </div>
+      <button *ngIf="productId" (click)="updateProduct(product.id)" class="btn btn-warning">Update</button>
+      <button *ngIf="!productId" (click)="saveProduct()" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+  </div>
+</div>
+
+</div>
